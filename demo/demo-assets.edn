@@ -1,0 +1,36 @@
+[{:asset/symbol "SPY"
+  :asset/name "SPDR S&P 500 ETF Trust"
+  :asset/exchange "NYSE"
+  :asset/category :etf
+  :asset/market :us}
+ {:asset/symbol "QQQ"
+  :asset/name "Invesco QQQ Trust"
+  :asset/exchange "NASDAQ"
+  :asset/category :etf
+  :asset/market :us}
+ {:asset/symbol "AAPL"
+  :asset/name "Apple Inc."
+  :asset/exchange "NASDAQ"
+  :asset/category :equity
+  :asset/market :us}
+ {:asset/symbol "MSFT"
+  :asset/name "Microsoft Corporation"
+  :asset/exchange "NASDAQ"
+  :asset/category :equity
+  :asset/market :us}
+ {:asset/symbol "EURUSD"
+  :asset/name "Euro / US Dollar"
+  :asset/exchange "FX"
+  :asset/category :fx
+  :asset/market :forex}
+ {:asset/symbol "USDJPY"
+  :asset/name "US Dollar / Japanese Yen"
+  :asset/exchange "FX"
+  :asset/category :fx
+  :asset/market :forex}
+ {:asset/symbol "BTCUSDT"
+  :asset/name "Bitcoin / Tether"
+  :asset/exchange "BYBIT"
+  :asset/category :crypto
+  :asset/market :crypto
+  :asset/bybit [:spot "BTCUSDT"]}]

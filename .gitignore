@@ -12,3 +12,6 @@ pom.xml.asc
 .lsp
 .calva
 .nrepl-port
+quanta-asset/target
+demo/asset-db
+demo/.cpcache

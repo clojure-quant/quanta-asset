@@ -1,0 +1,4 @@
+{:db {:dir "asset-db"}
+
+ :db-seed {:assets-file "demo-assets.edn"
+           :lists-dir "demo-lists"}}

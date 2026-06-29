@@ -1,0 +1,12 @@
+{:modular (modular.system/modular-env)
+ :components
+ {:config {:start (deref (modular.config/load-config! (:config #ref [:modular])))}
+
+  :db {:start (quanta.util.datahike/db-start
+               {:schema (deref quanta.asset.schema/schema)
+                :db-path (get-in (clip/ref :config) [:db :dir])
+                :seed-fn [(quanta.asset.seed/seed-edn-assets-fn
+                           (get-in (clip/ref :config) [:db-seed :assets-file]))
+                          (quanta.asset.seed/seed-edn-lists-fn
+                           (get-in (clip/ref :config) [:db-seed :lists-dir]))]})
+       :stop (quanta.util.datahike/db-stop this)}}}

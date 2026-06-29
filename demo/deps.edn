@@ -1,0 +1,13 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.3"}
+        io.github.clojure-quant/quanta-asset {:local/root "../quanta-asset"}
+        io.github.clojure-quant/quanta-util {:mvn/version "0.1.1"}
+        org.pinkgorilla/modular {:mvn/version "0.5.81"}}
+ :aliases
+ {:server {:exec-fn modular.system/start!
+           :exec-args {:config ["config.edn"]
+                       :services "services.edn"
+                       :profile "default"
+                       :version "prod1"}}
+
+  :print {:exec-fn demo.print/print-demo!}}}

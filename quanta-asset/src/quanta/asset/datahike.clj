@@ -1,27 +1,7 @@
 (ns quanta.asset.datahike
   (:require
-   [taoensso.timbre :as timbre :refer [info warn error]]
-   ;[clojure.java.io :as io]
-   [datahike.api :as d]
-   [quanta.asset.schema :refer [schema]]))
-
-(defn start-asset-db [db-dir]
-  (let [cfg {:store {:backend :file ; backends: in-memory, file-based, LevelDB, PostgreSQL
-                     :id (java.util.UUID/fromString "04234acd-f191-42f9-9b95-bb4d52723c76")
-                     :path db-dir}
-             :keep-history? false
-             :schema-flexibility :write  ;default - strict value types need to be defined in advance. 
-                  ;:schema-flexibility :read ; transact any  kind of data into the database you can set :schema-flexibility to read
-             :initial-tx schema ; commit a schema
-             }]
-  ; create when not existing
-  ; (.exists (io/file db-filename))
-    (when-not (d/database-exists? cfg)
-      (warn "creating datahike db..")
-    ;(d/delete-database cfg)
-      (d/create-database cfg))
-  ; connect
-    (d/connect cfg)))
+   [taoensso.timbre :as timbre :refer [info]]
+   [datahike.api :as d]))
 
 (defn stop [conn]
   (when conn
@@ -163,3 +143,10 @@
       (d/q @dbconn list-name)
       first
       untupelize-list))
+
+(defn list-names [dbconn]
+  (->> (d/q '[:find [?name ...]
+              :where
+              [?id :lists/name ?name]]
+            @dbconn)
+       sort))
