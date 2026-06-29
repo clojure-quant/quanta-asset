@@ -1,13 +1,6 @@
 (ns quanta.asset.datahike
   (:require
-   [taoensso.timbre :as timbre :refer [info]]
    [datahike.api :as d]))
-
-(defn stop [conn]
-  (when conn
-    (info "disconnecting from datahike..")
-    (d/release conn)
-    (info "datahike stopped!")))
 
 (defn add-asset-details [dbconn asset]
   (d/transact dbconn [(merge {:db/id [:asset/symbol (:asset/symbol asset)]}
